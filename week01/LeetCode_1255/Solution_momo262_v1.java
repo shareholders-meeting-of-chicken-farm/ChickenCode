@@ -1,7 +1,9 @@
 package LeetCode_1255;
 
 /*
- recursion method,avoid duplicate calculation of lettersNumberCheck
+ recursion method,avoid duplicate check of letters
+ for example,once we find word A is invalid for current letters or not,we should consider without it later
+ so we get a sub problem，and do not to consider previous words any longer
  */
 public class Solution_momo262_v1 {
 
@@ -34,10 +36,10 @@ public class Solution_momo262_v1 {
         }
 
         if (!canAddCurrentWord) {
-            //skip currentWord
+            //skip current word
             return maxScoreOfSubWords(startWordIndex + 1,words,lettersCount,score);
         } else {
-            //compare two choices scores
+            //compare two scores:choose current word or not
             return Math.max(maxScoreOfSubWords(startWordIndex + 1,words,lettersCount,score),
                     currentWordScore +maxScoreOfSubWords(startWordIndex + 1,words,remainLettersCount,score));
         }

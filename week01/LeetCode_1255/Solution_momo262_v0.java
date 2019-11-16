@@ -1,7 +1,7 @@
 package LeetCode_1255;
 
 /*
- brute force method
+ brute force method,take quite long run time
  */
 public class Solution_momo262_v0 {
 

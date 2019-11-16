@@ -2,7 +2,7 @@ package leetcode_1250;
 
 /*
    1.suppose two numbers:x and y,with their gcd n.we have ax + by = n * (ax/n + by/n)
-     for x/n and y/n are relatively prime,there exists a&b,so that ax/n + by/n = 1
+     as x/n and y/n are relatively prime,there must exist a&b,so that ax/n + by/n = 1
      so we can have conclusion:ax + by = gcd(x,y) has solution
 
    2.in the array,if two numbers are relatively prime,the sum themselves can be 1,return true
@@ -23,7 +23,7 @@ public class Solution_momo262_v0 {
 
         for (int i=1;i<nums.length;i++) {
             int gcd = gcd(currentGcd,nums[i]);
-            //if two numbers are relatively prime,
+            //if two numbers are relatively prime
             if (gcd == 1) {
                 return true;
             } else {

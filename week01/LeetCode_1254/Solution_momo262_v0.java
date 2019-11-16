@@ -1,6 +1,7 @@
 package LeetCode_1254;
 
 public class Solution_momo262_v0 {
+
     private int columnNumber;
 
     public int closedIsland(int[][] grid) {
