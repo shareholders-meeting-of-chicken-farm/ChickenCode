@@ -7,12 +7,9 @@ public class Solution {
         int result = 0;
         columnNumber = grid[0].length;
 
-        //travelFirstLine and exclude 0s that connect to them
-        for (int i=0;i<columnNumber;i++) {
-            travel(grid,0,i);
-        }
-        //travelBottomLine and exclude 0s that connect to them
+        //travelFirstBottomLine and exclude 0s that connect to them
         for (int j=0;j<columnNumber;j++) {
+            travel(grid,0,j);
             travel(grid,grid.length - 1,j);
         }
         //travelLeftAndRightColumn and exclude 0s that connect to them
