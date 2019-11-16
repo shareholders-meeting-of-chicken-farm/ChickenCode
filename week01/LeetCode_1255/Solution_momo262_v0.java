@@ -1,6 +1,9 @@
 package LeetCode_1255;
 
-public class Solution {
+/*
+ brute force method
+ */
+public class Solution_momo262_v0 {
 
     private int[] wordScore = new int[14];
 
