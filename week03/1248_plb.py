@@ -17,9 +17,3 @@ def numberOfSubarrays(nums, k):
         result += (number_between_odd[i] + 1) * (number_between_odd[i + k] + 1)
 
     return result
-
-
-NUMS = [1, 1, 2, 1, 1]
-K = 3
-
-print(numberOfSubarrays(NUMS, K))
