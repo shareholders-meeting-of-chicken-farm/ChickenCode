@@ -21,4 +21,4 @@ class Solution:
 
         return (row_operated_num * m
                 + col_operated_num * n
-                - 2* row_operated_num * col_operated_num)
+                - 2 * row_operated_num * col_operated_num)
