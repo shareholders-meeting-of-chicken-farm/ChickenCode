@@ -1,4 +1,6 @@
 from threading import Lock, Semaphore
+from typing import Callable
+
 
 class DiningPhilosophers:
     def __init__(self):
