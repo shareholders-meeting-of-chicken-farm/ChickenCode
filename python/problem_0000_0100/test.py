@@ -82,3 +82,20 @@ class Test00000100(unittest.TestCase):
         result5 = 2.5
         self.assertAlmostEqual(solution.findMedianSortedArrays(arr4_1, arr4_2),
                                result5)
+
+    def test005(self):
+        in1 = "abcb"
+        result1 = "bcb"
+        self.assertEqual(result1, solution.longestPalindrome(in1))
+
+        in2 = "cbbd"
+        result2 = "bb"
+        self.assertEqual(result2, solution.longestPalindrome(in2))
+
+        in3 = "ebabababe"
+        result3 = in3
+        self.assertEqual(result3, solution.longestPalindrome(in3))
+
+        in4 = "ac"
+        result4 = ["a", "c"]
+        self.assertIn(solution.longestPalindrome(in4), result4)

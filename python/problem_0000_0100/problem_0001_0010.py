@@ -89,9 +89,13 @@ class Solution:
 
         return max_length
 
-    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+    def findMedianSortedArrays(self, nums1: List[int],
+                               nums2: List[int]) -> float:
         """Code for solving leetcode problem 04:
         https://leetcode.com/problems/median-of-two-sorted-arrays"""
+        # 借助寻找第k小的数的函数。
+        # 寻找第k小的数的时候，每次比较两个数组第[k / 2]个数，小的一方以及它前面的
+        # 所有数都可以被排除。
         if not nums1:
             length = len(nums2)
             if length % 2 == 1:
@@ -142,3 +146,50 @@ class Solution:
             j = find_k_min(total_num // 2, nums1, nums2, 0, 0)
 
             return (i + j) / 2.0
+
+    def longestPalindrome(self, s: str) -> str:
+        """Code for solving leetcode problem 05:
+        https://leetcode.com/problems/longest-palindromic-substring"""
+        # 复杂度为O(n^2)的中心展开算法。依次遍历中心点并左右展开，寻找最长的回文串。
+        if len(s) <= 1:
+            return s
+        s = "$" + "#".join(s) + "&"
+
+        max_center = 0
+        max_width = 0
+        max_actual_length = 0
+
+        for center in range(1, len(s) - 1):
+            width = 1
+            while center - width >= 0 and center + width <= len(s) - 1:
+                left = center - width
+                right = center + width
+                if s[left] == s[right]:
+                    width += 1
+                else:
+                    break
+
+            width -= 1
+
+            if s[center] == "#":
+                actual_length = 2 * width
+
+            else:
+                actual_length = 2 * width - 1
+                if actual_length < 1:
+                    actual_length = 1
+
+            if actual_length > max_actual_length:
+                max_center = center
+                max_width = width
+                max_actual_length = actual_length
+
+        result = [x for x in
+                  s[max_center - max_width: max_center + max_width + 1]
+                  if x not in ["#", "&", "$"]]
+        return "".join(result)
+
+    def convert(self, s: str, numRows: int) -> str:
+        """Code for solving leetcode problem 05:
+        https://leetcode.com/problems/zigzag-conversion"""
+        pass
