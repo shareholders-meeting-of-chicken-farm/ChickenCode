@@ -302,3 +302,22 @@ class Solution:
         if overflow:
             return 2147483647 if not negative else -2147483648
         return result if not negative else -result
+
+    def isPalindrome(self, x: int) -> bool:
+        """Code for solving leetcode problem 09:
+        https://leetcode.com/problems/palindrome-number"""
+        # 判断x的反转是否等于x
+        if x < 0:
+            return False
+        if x < 10:
+            return True
+
+        x_backup = x
+        result = 0
+
+        while x > 0:
+            last_digit = x % 10
+            result = result * 10 + last_digit
+            x = x // 10
+
+        return result == x_backup

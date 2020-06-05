@@ -172,3 +172,19 @@ class Test00000100(unittest.TestCase):
         in10 = "   -88827 5655 U"
         result10 = -88827
         self.assertEqual(result10, solution.myAtoi(in10))
+
+    def test009(self):
+        in1 = 4567654
+        self.assertTrue(solution.isPalindrome(in1))
+
+        in2 = 54643243
+        self.assertFalse(solution.isPalindrome(in2))
+
+        in3 = 98
+        self.assertFalse(solution.isPalindrome(in3))
+
+        in4 = 55
+        self.assertTrue(solution.isPalindrome(in4))
+
+        in5 = 1000021
+        self.assertFalse(solution.isPalindrome(in5))
