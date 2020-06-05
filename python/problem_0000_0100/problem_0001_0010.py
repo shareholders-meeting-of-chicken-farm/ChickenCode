@@ -89,8 +89,7 @@ class Solution:
 
         return max_length
 
-    def findMedianSortedArrays(self, nums1: List[int],
-                               nums2: List[int]) -> float:
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
         """Code for solving leetcode problem 04:
         https://leetcode.com/problems/median-of-two-sorted-arrays"""
         # 借助寻找第k小的数的函数。
@@ -190,6 +189,116 @@ class Solution:
         return "".join(result)
 
     def convert(self, s: str, numRows: int) -> str:
-        """Code for solving leetcode problem 05:
+        """Code for solving leetcode problem 06:
         https://leetcode.com/problems/zigzag-conversion"""
-        pass
+        if not s or numRows == 1 or numRows == len(s):
+            return s
+
+        lines = ["" for _ in range(numRows)]
+        current_row = 0
+        going_down = True
+        for c in s:
+            lines[current_row] += c
+            if going_down and current_row == numRows - 1:
+                going_down = False
+                current_row -= 1
+            elif not going_down and current_row == 0:
+                going_down = True
+                current_row += 1
+
+            elif going_down:
+                current_row += 1
+
+            else:
+                current_row -= 1
+
+        return "".join(lines)
+
+    def reverse(self, x: int) -> int:
+        """Code for solving leetcode problem 07:
+        https://leetcode.com/problems/reverse-integer"""
+        import math
+        if x == 0:
+            return 0
+        negative = x < 0
+        x = abs(x)
+
+        result = 0
+        m = int(math.log(x, 10))
+        n = 0
+
+        while m >= 0:
+            current_digit = x // (10 ** m)
+
+            result_threshold = 147483648
+            if not negative:
+                result_threshold -= 1
+            if n > 9 or (n == 9 and current_digit >= 2 and result > result_threshold):
+                return 0
+
+            result += (current_digit * (10 ** n))
+            x -= current_digit * (10 ** m)
+            m -= 1
+            n += 1
+
+        if negative:
+            result *= -1
+
+        return result
+
+    def myAtoi(self, s: str) -> int:
+        """Code for solving leetcode problem 08:
+        https://leetcode.com/problems/string-to-integer-atoi"""
+        result = 0
+        negative = False
+        has_met_number = False
+        overflow = False
+        started = False
+        threshold = 214748364
+        last_threshold = 7
+        leading_flag_count = 0
+        for c in s:
+            should_stop = False
+
+            if c == " " and started:
+                should_stop = True
+            elif has_met_number and (ord(c) < ord('0') or ord(c) > ord('9')):
+                should_stop = True
+            elif (c == "-" or c == "+") and leading_flag_count > 0:
+                should_stop = True
+
+            if should_stop:
+                if overflow:
+                    return 2147483647 if not negative else -2147483648
+                return result if not negative else -result
+
+            if c == " ":
+                continue
+
+            started = True
+            if c == "+":
+                leading_flag_count += 1
+                continue
+            if c == "-":
+                negative = True
+                last_threshold += 1
+                leading_flag_count += 1
+                continue
+            if result == 0 and c == '0':
+                has_met_number = True
+                continue
+            if ord('0') <= ord(c) <= ord('9'):
+                has_met_number = True
+                current_digit = ord(c) - ord('0')
+                if result > threshold or (result == threshold and current_digit > last_threshold):
+                    overflow = True
+                    break
+                else:
+                    result *= 10
+                    result += current_digit
+            else:
+                break
+
+        if overflow:
+            return 2147483647 if not negative else -2147483648
+        return result if not negative else -result

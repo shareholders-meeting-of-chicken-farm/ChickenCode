@@ -99,3 +99,76 @@ class Test00000100(unittest.TestCase):
         in4 = "ac"
         result4 = ["a", "c"]
         self.assertIn(solution.longestPalindrome(in4), result4)
+
+    def test006(self):
+        in1_1 = "PAYPALISHIRING"
+        in1_2 = 3
+        result1 = "PAHNAPLSIIGYIR"
+
+        in2_2 = 4
+        result2 = "PINALSIGYAHRPI"
+
+        self.assertEqual(result1, solution.convert(in1_1, in1_2))
+        self.assertEqual(result2, solution.convert(in1_1, in2_2))
+
+    def test007(self):
+        in1 = 123
+        result1 = 321
+        self.assertEqual(result1, solution.reverse(in1))
+
+        in2 = 120
+        result2 = 21
+        self.assertEqual(result2, solution.reverse(in2))
+
+        in3 = 1534236469
+        result3 = 0
+        self.assertEqual(result3, solution.reverse(in3))
+
+        in4 = 8463847412
+        result4 = 0
+        self.assertEqual(result4, solution.reverse(in4))
+
+        in5 = -in4
+        result5 = -2147483648
+        self.assertEqual(result5, solution.reverse(in5))
+
+    def test008(self):
+        in1 = "-21"
+        result1 = -21
+        self.assertEqual(result1, solution.myAtoi(in1))
+
+        in2 = "4193 with words"
+        result2 = 4193
+        self.assertEqual(result2, solution.myAtoi(in2))
+
+        in3 = "   -21"
+        result3 = -21
+        self.assertEqual(result3, solution.myAtoi(in3))
+
+        in4 = "words and 987"
+        result4 = 0
+        self.assertEqual(result4, solution.myAtoi(in4))
+
+        in5 = "-91283472332"
+        result5 = -2147483648
+        self.assertEqual(result5, solution.myAtoi(in5))
+
+        in6 = "+-2"
+        result6 = 0
+        self.assertEqual(result6, solution.myAtoi(in6))
+
+        in7 = "   +0 123"
+        result7 = 0
+        self.assertEqual(result7, solution.myAtoi(in7))
+
+        in8 = "-2147483649"
+        result8 = -2147483648
+        self.assertEqual(result8, solution.myAtoi(in8))
+
+        in9 = "0-1"
+        result9 = 0
+        self.assertEqual(result9, solution.myAtoi(in9))
+
+        in10 = "   -88827 5655 U"
+        result10 = -88827
+        self.assertEqual(result10, solution.myAtoi(in10))
