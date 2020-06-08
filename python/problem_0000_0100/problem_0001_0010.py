@@ -321,3 +321,26 @@ class Solution:
             x = x // 10
 
         return result == x_backup
+
+    def isMatch(self, s: str, p: str) -> bool:
+        """Code for solving leetcode problem 10:
+        https://leetcode.com/problems/regular-expression-matching/"""
+        if not p:
+            return not s
+
+        if len(p) == 1 or p[1] != "*":
+            if not s or (p[0] != s[0] and p[0] != "."):
+                return False
+
+            return self.isMatch(s[1:], p[1:])
+
+        # Here p[1] == "*"
+        while s and (s[0] == p[0] or p[0] == "."):
+            if self.isMatch(s, p[2:]):
+                return True
+
+            else:
+                s = s[1:]
+
+        return self.isMatch(s, p[2:])
+

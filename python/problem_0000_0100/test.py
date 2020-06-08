@@ -188,3 +188,20 @@ class Test00000100(unittest.TestCase):
 
         in5 = 1000021
         self.assertFalse(solution.isPalindrome(in5))
+
+    def test010(self):
+        s = "aa"
+        p = "a*"
+        self.assertTrue(solution.isMatch(s, p))
+
+        s = "ab"
+        p = ".*"
+        self.assertTrue(solution.isMatch(s, p))
+
+        s = "aab"
+        p = "c*a*b"
+        self.assertTrue(solution.isMatch(s, p))
+
+        s = "mississippi"
+        p = "mis*is*p*."
+        self.assertFalse(solution.isMatch(s, p))
