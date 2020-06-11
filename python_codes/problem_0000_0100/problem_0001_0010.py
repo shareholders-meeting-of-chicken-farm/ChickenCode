@@ -3,12 +3,7 @@
 
 from typing import List
 
-
-# Definition for singly-linked list.
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
+from python_codes.utils.data_structure_utils import ListNode
 
 
 class Solution:
@@ -343,4 +338,3 @@ class Solution:
                 s = s[1:]
 
         return self.isMatch(s, p[2:])
-

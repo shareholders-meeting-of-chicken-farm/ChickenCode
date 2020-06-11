@@ -1,7 +1,7 @@
 import unittest
 
-from python.problem_0000_0100.problem_0001_0010 import Solution
-from python.problem_0000_0100.problem_0001_0010 import ListNode
+from python_codes.problem_0000_0100.problem_0001_0010 import Solution
+from python_codes.problem_0000_0100.problem_0001_0010 import ListNode
 
 solution = Solution()
 
