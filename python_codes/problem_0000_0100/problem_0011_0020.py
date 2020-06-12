@@ -95,3 +95,32 @@ class Solution:
                 raise ValueError("")
 
         return result
+
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        """Code for solving leetcode problem 14:
+        https://leetcode.com/problems/longest-common-prefix/"""
+        if not strs:
+            return ""
+
+        if len(strs) == 1:
+            return strs[0]
+
+        result = ""
+        i = 0
+        while True:
+            if i >= len(strs[0]):
+                break
+            s_0_i = strs[0][i]
+            all_equal = True
+            for s in strs[1:]:
+                if i >= len(s) or s[i] != s_0_i:
+                    all_equal = False
+                    break
+
+            if all_equal:
+                result += s_0_i
+                i += 1
+            else:
+                break
+
+        return result

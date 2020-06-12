@@ -22,3 +22,12 @@ class Test00000100(unittest.TestCase):
         s = "MCMXCIV"
         result = 1994
         self.assertEqual(result, solution.romanToInt(s))
+
+    def test14(self):
+        strs = ["flower", "flow", "flight"]
+        result = "fl"
+        self.assertEqual(result, solution.longestCommonPrefix(strs))
+
+        strs = ["dog", "dco", "dr"]
+        result = "d"
+        self.assertEqual(result, solution.longestCommonPrefix(strs))
