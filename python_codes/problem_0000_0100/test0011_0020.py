@@ -12,3 +12,13 @@ class Test00000100(unittest.TestCase):
         input_list = [1, 8, 6, 2, 5, 4, 8, 3, 7]
         result = 49
         self.assertEqual(result, solution.maxArea(input_list))
+
+    def test12(self):
+        num = 1994
+        result = "MCMXCIV"
+        self.assertEqual(result, solution.intToRoman(num))
+
+    def test13(self):
+        s = "MCMXCIV"
+        result = 1994
+        self.assertEqual(result, solution.romanToInt(s))
