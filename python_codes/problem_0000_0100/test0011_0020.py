@@ -31,3 +31,16 @@ class Test00000100(unittest.TestCase):
         strs = ["dog", "dco", "dr"]
         result = "d"
         self.assertEqual(result, solution.longestCommonPrefix(strs))
+
+    def test15(self):
+        nums = [-1, 0, 1, 2, -1, -4]
+        solution_set1 = [
+            [-1, 0, 1],
+            [-1, -1, 2]
+        ]
+        solution_set2 = [
+            [-1, -1, 2],
+            [-1, 0, 1]
+        ]
+
+        self.assertIn(solution.threeSum(nums), [solution_set1, solution_set2])

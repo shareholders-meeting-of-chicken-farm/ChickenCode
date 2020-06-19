@@ -124,3 +124,32 @@ class Solution:
                 break
 
         return result
+
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        """Code for solving leetcode problem 15:
+        https://leetcode.com/problems/3sum/"""
+        if not nums or len(nums) < 3:
+            return []
+
+        solutions = set()
+        sorted_nums = sorted(nums)
+
+        for smallest in range(len(sorted_nums) - 2):
+            left = smallest + 1
+            right = len(sorted_nums) - 1
+            while left < right:
+                current_sum = sorted_nums[smallest] + sorted_nums[left] + sorted_nums[right]
+                if current_sum == 0:
+                    solutions.add((sorted_nums[smallest], sorted_nums[left], sorted_nums[right]))
+                    left += 1
+                    right -= 1
+                elif current_sum > 0:
+                    right -= 1
+                else:
+                    left += 1
+
+        result = []
+        for solution in solutions:
+            result.append(list(solution))
+
+        return result
